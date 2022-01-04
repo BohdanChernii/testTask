@@ -1,0 +1,55 @@
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  &-content {
+    background-color: #2d394b;
+    position: relative;
+    color: #fff;
+    border-radius: 5%;
+    padding: 3%;
+    width: 50%;
+    min-height: 30%;
+    overflow: auto;
+    &__plot {
+      margin: 5% 0;
+    }
+    &__writer {
+      margin-bottom: 5%;
+    }
+    &__actors {
+      margin-bottom: 5%;
+    }
+    &__imdbRating {
+      margin: 2% 0;
+      text-align: right;
+    }
+  }
+  transform: scale(0);
+  transition: 0.5;
+}
+.modal.active {
+  transform: scale(1);
+}
+// .form {
+//   width: 80%;
+//   height: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   margin: auto;
+//   &-title {
+//     margin-bottom: 5%;
+//   }
+//   &-item {
+//     font-size: 18px;
+//     height: 30px;
+//     margin: 2% 0;
+//   }
+// }

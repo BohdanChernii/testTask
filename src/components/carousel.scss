@@ -1,0 +1,39 @@
+.carousel {
+  display: flex;
+  margin: 50px auto;
+}
+
+.slider {
+  display: flex;
+  &-item {
+    position: relative;
+    &__image {
+      height: 200px;
+      width: 169px;
+      object-fit: cover;
+    }
+    &__info {
+      position: absolute;
+      top: 0;
+      padding: 20px;
+      height: 100%;
+      display: none;
+    }
+  }
+
+  .slider-item:hover .slider-item__info {
+    height: 200px;
+    display: block;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 20px;
+
+    cursor: default;
+  }
+}
+.arrow {
+  display: block;
+  margin: auto;
+  font-size: 40px;
+  border: none;
+}

@@ -19,7 +19,6 @@ const Home = () => {
       setArr([...arr, ...nextPage]);
     }, 1500);
   };
-  console.log(window);
 
   return (
     <>

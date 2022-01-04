@@ -70,24 +70,23 @@ const Home = () => {
                   Genre:{item.genre} | Director: {item.director} | Year:
                   {item.year}
                 </p>
-                {user.password === loginUser.password &&
-                  user.email === loginUser.email && (
-                    <Modal active={active} setActive={setActive}>
-                      <h2>Information about this movie:</h2>
-                      <hr />
-                      <p className="modal-content__plot">{item.plot}</p>
-                      <p className="modal-content__writer">
-                        WRITER:{item.writer}
-                      </p>
-                      <p className="modal-content__actors">
-                        ACTORS:{item.actors}
-                      </p>
-                      <hr />
-                      <p className="modal-content__imdbRating">
-                        RATING:{item.imdbrating}
-                      </p>
-                    </Modal>
-                  )}
+                {user && (
+                  <Modal active={active} setActive={setActive}>
+                    <h2>Information about this movie:</h2>
+                    <hr />
+                    <p className="modal-content__plot">{item.plot}</p>
+                    <p className="modal-content__writer">
+                      WRITER:{item.writer}
+                    </p>
+                    <p className="modal-content__actors">
+                      ACTORS:{item.actors}
+                    </p>
+                    <hr />
+                    <p className="modal-content__imdbRating">
+                      RATING:{item.imdbrating}
+                    </p>
+                  </Modal>
+                )}
               </div>
             ))}
           </div>

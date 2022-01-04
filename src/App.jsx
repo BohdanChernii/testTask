@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Welcome from './components/Welcome';
 import Home from './components/Home';
 
-import { Switch, Route, Redirect, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 const App = () => {
   return (
     <div className="page">

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from './Button.jsx';
 import Modal from './Modal.jsx';
 import { useForm } from 'react-hook-form';
-import { user, loginUser } from './user.js';
+import { user } from './user.js';
 const Aunthentification = () => {
   const [signIn, setSignIn] = useState(false);
   const [signUp, setSignUp] = useState(false);
@@ -24,15 +24,13 @@ const Aunthentification = () => {
     localStorage.setItem('user', JSON.stringify(data));
     setSignUp(!signUp);
   };
-  const onSubmitLogin = (data) => {
-    localStorage.setItem('logUser', JSON.stringify(data));
+  const onSubmitLogin = () => {
     setSignIn(!signIn);
   };
 
   return (
     <>
-      {loginUser.email !== user.email &&
-      loginUser.password !== user.password ? (
+      {!user ? (
         <div className="home__info">
           <Button
             value="Sign In"

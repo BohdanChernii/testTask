@@ -70,7 +70,7 @@ const Home = () => {
                   Genre:{item.genre} | Director: {item.director} | Year:
                   {item.year}
                 </p>
-                {user && (
+                {user && movieIndex === index && (
                   <Modal active={active} setActive={setActive}>
                     <h2>Information about this movie:</h2>
                     <hr />

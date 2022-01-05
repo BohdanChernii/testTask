@@ -131,6 +131,7 @@ const Aunthentification = () => {
           </form>
         </Modal>
       )}
+      {console.log(window)}
     </>
   );
 };

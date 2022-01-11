@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from './Button.jsx';
 import Modal from './Modal.jsx';
 import { useForm } from 'react-hook-form';
+import { fetchUser, postUser } from '../gateway';
 import { user } from './user.js';
 const Aunthentification = () => {
   const [signIn, setSignIn] = useState(false);
   const [signUp, setSignUp] = useState(false);
-
+  const [users, setUsers] = useState([]);
+  const [auth, setAuth] = useState(false);
   const handleSignIn = () => {
     setSignIn(!signIn);
   };
@@ -21,16 +23,26 @@ const Aunthentification = () => {
     mode: 'onBlur',
   });
   const onSubmitRegistration = (data) => {
-    localStorage.setItem('user', JSON.stringify(data));
     setSignUp(!signUp);
+    postUser(data).then((result) =>
+      JSON.stringify(localStorage.setItem('user', JSON.stringify(result)))
+    );
   };
-  const onSubmitLogin = () => {
+
+  const onSubmitLogin = (data) => {
     setSignIn(!signIn);
+    fetchUser().then((result) => setUsers(result));
+    location.reload();
   };
+  users.filter((item) => {
+    if (item.email === user.email && item.password === user.password) {
+      return setAuth(true);
+    }
+  });
 
   return (
     <>
-      {!user ? (
+      {!user && !auth ? (
         <div className="home__info">
           <Button
             value="Sign In"
@@ -46,7 +58,6 @@ const Aunthentification = () => {
       ) : (
         <p className="home__info-item">{user.name}</p>
       )}
-
       {signIn && (
         <Modal active={signIn} setActive={setSignIn}>
           <form onSubmit={handleSubmit(onSubmitLogin)} className="form">
@@ -85,7 +96,6 @@ const Aunthentification = () => {
           </form>
         </Modal>
       )}
-
       {signUp && (
         <Modal active={signUp} setActive={setSignUp}>
           <form onSubmit={handleSubmit(onSubmitRegistration)} className="form">
@@ -131,7 +141,6 @@ const Aunthentification = () => {
           </form>
         </Modal>
       )}
-      {console.log(window)}
     </>
   );
 };
